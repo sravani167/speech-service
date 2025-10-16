@@ -25,11 +25,26 @@ An optional client script allows users to record audio locally and either save i
 - Expose an HTTP API for transcription.
 - Health check endpoint.
 
-## Supported Audio Formats
-The transcription service accepts only WAV files with the following constraints:
-- Mono channel
-- 16-bit PCM
-- Sample rates: 8000, 16000, 32000, 44100, or 48000 Hz
+## Supported Audio Formats and Limits
+
+### Accepted Format
+- **File type:** WAV (`.wav`) only  
+- **Encoding:** PCM (16-bit, mono channel)  
+- **Supported sample rates:** 8000, 16000, 32000, 44100, or 48000 Hz  
+
+### Reason
+The Vosk engine requires uncompressed PCM audio for accurate transcription.  
+Stereo or compressed formats (e.g., MP3, AAC) are not supported.
+
+### Runtime Limits
+- **Recommended maximum file size:** ~10 MB (≈ 1–2 minutes of audio at 16 kHz mono).  
+- Larger files may increase memory usage or processing time.  
+- Real time transcription speed depends on CPU performance — typically near 1× real time for small models.
+
+### Recording constraints:
+- The client script (record_client.py) records mono audio at 16 kHz sample rate.
+- Default duration: 5 seconds (can be changed via --duration).
+- Audio is saved as int16 PCM format and is fully compatible with the transcription endpoint.
 
 
 ## Setup
