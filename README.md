@@ -1,10 +1,5 @@
 # Speech Transcription Service
 
-## Overview
-This project provides a speech to text transcription service using an open-source library (e.g., Vosk). It includes:
-- A FastAPI based HTTP service for transcription.
-- A client script for recording and transcribing audio locally or via the service.
-
 ## Architecture Overview
 This service provides speech to text transcription using the open-source Vosk engine. 
 The FastAPI application exposes two main endpoints: 
